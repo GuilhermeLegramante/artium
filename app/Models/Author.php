@@ -12,6 +12,7 @@ class Author extends Model
     use HasFactory, BelongsToUser;
 
     protected $fillable = [
+        'user_id',
         'name',
     ];
 

@@ -1,13 +1,13 @@
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
     <ul class="nav">
-      <li class="nav-item {{ Route::current()->getName() == 'teste' ? 'active' : '' }}">
-        <a class="nav-link" href="{{ route('teste') }}">
+      <li class="nav-item {{ Route::current()->getName() == 'dashboard' ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('dashboard') }}">
           <span class="menu-title">Dashboard</span>
           <i class="mdi mdi-home menu-icon"></i>
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+        <a class="nav-link" href="{{ route('authors') }}">
           <span class="menu-title">Autores</span>
           <i class="mdi mdi-account-multiple menu-icon"></i>
         </a>

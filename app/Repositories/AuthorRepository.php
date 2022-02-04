@@ -17,12 +17,12 @@ class AuthorRepository
     {
         return $this->entity
             ->where(function ($query) use ($filters) {
-                if (isset($filters['filter'])) {
-                    $filter = $filters['filter'];
+                if (isset($filters['name'])) {
+                    $filter = $filters['name'];
                     $query->where('name', 'LIKE', "'%{$filter}%");
                 }
 
-                $query->where('user_id', auth()->user());
+                $query->where('user_id', auth()->user()->id);
             })
             ->orderBy($filters['sortBy'], $filters['sortDirection']);
     }

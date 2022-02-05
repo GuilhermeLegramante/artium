@@ -3,14 +3,15 @@
 namespace App\Repositories;
 
 use App\Models\Author;
+use Illuminate\Support\Facades\App;
 
 class AuthorRepository
 {
     protected $entity;
 
-    public function __construct(Author $model)
+    public function __construct()
     {
-        $this->entity = $model;
+        $this->entity = App::make(Author::class);
     }
 
     public function all(array $filters = [])

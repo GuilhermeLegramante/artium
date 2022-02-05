@@ -14,18 +14,12 @@ class AuthorRepository
         $this->entity = App::make(Author::class);
     }
 
-    public function all(array $filters = [])
+    public function all(string $search = null, $sortBy = 'id', $sortDirection = 'asc')
     {
         return $this->entity
-            ->where(function ($query) use ($filters) {
-                if (isset($filters['name'])) {
-                    $filter = $filters['name'];
-                    $query->where('name', 'LIKE', "'%{$filter}%");
-                }
-
-                $query->where('user_id', auth()->user()->id);
-            })
-            ->orderBy($filters['sortBy'], $filters['sortDirection']);
+            ->where('name', 'LIKE', '%' . $search . '%')
+            ->orWhere('id', 'LIKE', '%' . $search . '%')
+            ->orderBy($sortBy, $sortDirection);
     }
 
     public function findById(string $id)

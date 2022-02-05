@@ -8,11 +8,11 @@
 
                 <table class="table table-striped table-hover">
                     <thead>
-                        <tr>
-                            <th> Código </th>
-                            <th> Nome </th>
-                            <th> Data de Inclusão </th>
-                            <th> Data de Edição </th>
+                        <tr class="cursor-pointer">
+                            @include('partials.sort-icon', ['field' => 'id', 'label' => 'Código'])
+                            @include('partials.sort-icon', ['field' => 'name', 'label' => 'Nome'])
+                            @include('partials.sort-icon', ['field' => 'created_at', 'label' => 'Data de Inclusão'])
+                            @include('partials.sort-icon', ['field' => 'updated_at', 'label' => 'Última Edição'])                            
                             <th> Ações </th>
                         </tr>
                     </thead>

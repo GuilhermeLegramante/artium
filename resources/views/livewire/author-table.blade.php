@@ -1,21 +1,14 @@
 <div>
-    @include('partials.page-header', ['title' => 'Autores', 'icon' => 'mdi mdi-account-multiple'])
+    @include('partials.page-header')
 
     <div class="col-lg-12 grid-margin stretch-card">
         <div class="card">
             <div class="card-body table-responsive">
-                @include('partials.table-header', ['field' => 'Autor', 'search' => 'Código ou Nome'])
+                @include('partials.add-search-header')
 
                 <table class="table table-striped table-hover">
-                    <thead>
-                        <tr class="cursor-pointer">
-                            @include('partials.sort-icon', ['field' => 'id', 'label' => 'Código'])
-                            @include('partials.sort-icon', ['field' => 'name', 'label' => 'Nome'])
-                            @include('partials.sort-icon', ['field' => 'created_at', 'label' => 'Data de Inclusão'])
-                            @include('partials.sort-icon', ['field' => 'updated_at', 'label' => 'Última Edição'])                            
-                            <th> Ações </th>
-                        </tr>
-                    </thead>
+                    @include('partials.table-header')
+                    
                     <tbody>
                         @foreach ($data as $item)
                             <tr>

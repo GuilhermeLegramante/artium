@@ -15,4 +15,9 @@ trait WithDatatable
         $this->sortDirection == 'asc' ? $this->sortDirection = 'desc' : $this->sortDirection = 'asc';
         return $this->sortBy = $field;
     }
+
+    public function callForm()
+    {
+        return redirect()->route($this->formRoute);
+    }
 }

@@ -9,8 +9,6 @@
 
             <div class="main-panel">
                 <div class="content-wrapper">
-                    
-                    @yield('content')
                     {{ $slot }}
                 </div>
                 <footer class="footer">

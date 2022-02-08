@@ -5,10 +5,15 @@ use App\Http\Livewire\AuthorTable;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('index');
+    return view('dashboard');
 })->name('dashboard');
 
-Route::get('autores/', AuthorTable::class)->name('authors');
-Route::get('/novo-autor', AuthorForm::class)->name('author');
+Route::prefix('/autor')->group(function () {
+    Route::name('author.')->group(function () {
+        Route::get('/', AuthorTable::class)->name('list');
+        Route::get('/inclusao', AuthorForm::class)->name('create');
+        Route::get('/{id}', AuthorForm::class)->name('edit');
+    });
+});
 
 require __DIR__ . '/auth.php';

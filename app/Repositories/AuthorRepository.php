@@ -39,7 +39,7 @@ class AuthorRepository
     public function update(array $data): bool
     {
         return $this->entity
-            ->where('id', $data['id'])
+            ->where('id', $data['recordId'])
             ->update([
                 'user_id' => auth()->user()->id,
                 'name' => $data['name'],

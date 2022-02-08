@@ -7,49 +7,49 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{{ route('authors') }}">
+        <a class="nav-link" href="{{ route('author.list') }}">
           <span class="menu-title">Autores</span>
           <i class="mdi mdi-account-multiple menu-icon"></i>
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="pages/icons/mdi.html">
+        <a class="nav-link" href="">
           <span class="menu-title">Editoras</span>
           <i class="mdi mdi-contacts menu-icon"></i>
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="pages/forms/basic_elements.html">
+        <a class="nav-link" href="">
           <span class="menu-title">Gêneros</span>
           <i class="mdi mdi-bookmark menu-icon"></i>
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="pages/charts/chartjs.html">
+        <a class="nav-link" href="">
           <span class="menu-title">Leituras</span>
           <i class="mdi mdi-book-open-page-variant menu-icon"></i>
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="pages/tables/basic-table.html">
+        <a class="nav-link" href="">
           <span class="menu-title">Minha Biblioteca</span>
           <i class="mdi mdi-library-books menu-icon"></i>
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="pages/tables/basic-table.html">
+        <a class="nav-link" href="">
           <span class="menu-title">Movimentos</span>
           <i class="mdi mdi-swap-vertical menu-icon"></i>
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="pages/tables/basic-table.html">
+        <a class="nav-link" href="">
           <span class="menu-title">Wishlist</span>
           <i class="mdi mdi-gift menu-icon"></i>
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="pages/tables/basic-table.html">
+        <a class="nav-link" href="">
           <span class="menu-title">Configurações</span>
           <i class="mdi mdi-settings menu-icon"></i>
         </a>

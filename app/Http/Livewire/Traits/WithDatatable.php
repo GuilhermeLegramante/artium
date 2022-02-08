@@ -16,8 +16,12 @@ trait WithDatatable
         return $this->sortBy = $field;
     }
 
-    public function callForm()
+    public function callForm($id = null)
     {
-        return redirect()->route($this->formRoute);
+        if(isset($id)){
+            return redirect()->route($this->route . '.edit', ['id' => $id]);
+        } else {
+            return redirect()->route($this->route . '.create');
+        }
     }
 }

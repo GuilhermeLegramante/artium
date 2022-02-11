@@ -14,18 +14,12 @@ class PublisherRepository
         $this->entity = $model;
     }
 
-    public function all(array $filters = [])
+    public function all(string $search = null, $sortBy = 'id', $sortDirection = 'asc')
     {
         return $this->entity
-            ->where(function ($query) use ($filters) {
-                if (isset($filters['filter'])) {
-                    $filter = $filters['filter'];
-                    $query->where('name', 'LIKE', "'%{$filter}%");
-                }
-
-                                $query->where('user_id', auth()->user());
-            })
-            ->orderBy($filters['sortBy'], $filters['sortDirection']);
+            ->where('name', 'LIKE', '%' . $search . '%')
+            ->orWhere('id', 'LIKE', '%' . $search . '%')
+            ->orderBy($sortBy, $sortDirection);
     }
 
     public function findById(string $id)
@@ -45,7 +39,7 @@ class PublisherRepository
     public function update(array $data): bool
     {
         return $this->entity
-            ->where('id', $data['id'])
+            ->where('id', $data['recordId'])
             ->update([
                 'user_id' => auth()->user()->id,
                 'name' => $data['name'],

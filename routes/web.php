@@ -2,6 +2,8 @@
 
 use App\Http\Livewire\AuthorForm;
 use App\Http\Livewire\AuthorTable;
+use App\Http\Livewire\PublisherForm;
+use App\Http\Livewire\PublisherTable;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -13,6 +15,14 @@ Route::prefix('/autor')->group(function () {
         Route::get('/', AuthorTable::class)->name('list');
         Route::get('/inclusao', AuthorForm::class)->name('create');
         Route::get('/{id}', AuthorForm::class)->name('edit');
+    });
+});
+
+Route::prefix('/editora')->group(function () {
+    Route::name('publisher.')->group(function () {
+        Route::get('/', PublisherTable::class)->name('list');
+        Route::get('/inclusao', PublisherForm::class)->name('create');
+        Route::get('/{id}', PublisherForm::class)->name('edit');
     });
 });
 

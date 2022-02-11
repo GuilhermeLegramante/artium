@@ -7,17 +7,17 @@ use Illuminate\Support\Facades\App;
 use App\Http\Livewire\Traits\WithForm;
 use App\Http\Livewire\Traits\WithFlashMessages;
 
-class AuthorForm extends Component
+class PublisherForm extends Component
 {
     use WithForm, WithFlashMessages;
 
-    public $title = 'Autor';
-    public $icon = 'mdi mdi-account-multiple';
-    public $previousRoute = 'author.list';
+    public $title = 'Editora';
+    public $icon = 'mdi mdi-contacts';
+    public $previousRoute = 'publisher.list';
     public $method = 'store';
-    public $basePath = 'author.list';
+    public $basePath = 'publisher.list';
 
-    protected $repositoryClass = 'App\Repositories\AuthorRepository';
+    protected $repositoryClass = 'App\Repositories\PublisherRepository';
 
     protected $inputs = [
         ['field' => 'recordId', 'edit' => true],
@@ -48,12 +48,11 @@ class AuthorForm extends Component
                 $this->name = $author->name;
             }
         }
+
     }
 
     public function render()
     {
-        return view('livewire.author-form');
+        return view('livewire.publisher-form');
     }
-
-    
 }

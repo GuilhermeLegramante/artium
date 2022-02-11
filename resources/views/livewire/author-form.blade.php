@@ -1,6 +1,8 @@
 <div>
     @include('partials.flash-messages')
 
+    @include('partials.modal-delete')
+
     @include('partials.page-header')
 
     <div class="col-lg-12 grid-margin stretch-card">
@@ -13,12 +15,9 @@
                 ])
 
                 @include('partials.footer-crud')
-
             </div>
         </div>
     </div>
 </div>
 
-@push('scripts')
-    
-@endpush
+

@@ -62,9 +62,16 @@ trait WithForm
 
     public function destroy()
     {
-        $repository = App::make($this->repositoryClass);
-        $repository->delete([
-            'id' => $this->recordId,
-        ]);
+        try
+        {
+            $repository = App::make($this->repositoryClass);
+            $repository->delete([
+                'id' => $this->recordId,
+            ]);
+            session()->flash('success', 'Registro excluído com sucesso');
+            return redirect()->route($this->basePath);
+        } catch (\Exception $error) {
+            session()->flash('error', $error->getMessage());
+        }
     }
 }

@@ -14,6 +14,12 @@
                 'placeholder' => 'Nome'
                 ])
 
+                @include('partials.input-text',
+                ['label' => 'Descrição',
+                'model' => 'description',
+                'placeholder' => 'Descrição'
+                ])
+
                 @include('partials.footer-crud')
             </div>
         </div>

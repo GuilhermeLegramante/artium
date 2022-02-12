@@ -3,8 +3,6 @@
 namespace App\Repositories;
 
 use App\Models\Gender;
-use App\Repositories\Traits\RepositoryTrait;
-
 class GenderRepository
 {
     protected $entity;
@@ -14,23 +12,12 @@ class GenderRepository
         $this->entity = $model;
     }
 
-    public function all(array $filters = [])
+    public function all(string $search = null, $sortBy = 'id', $sortDirection = 'asc')
     {
         return $this->entity
-            ->where(function ($query) use ($filters) {
-                if (isset($filters['filter'])) {
-                    $filter = $filters['filter'];
-                    $query->where('name', 'LIKE', "'%{$filter}%");
-                }
-
-                if (isset($filters['filter'])) {
-                    $filter = $filters['filter'];
-                    $query->where('description', 'LIKE', "'%{$filter}%");
-                }
-
-                                $query->where('user_id', auth()->user());
-            })
-            ->orderBy($filters['sortBy'], $filters['sortDirection']);
+            ->where('name', 'LIKE', '%' . $search . '%')
+            ->orWhere('id', 'LIKE', '%' . $search . '%')
+            ->orderBy($sortBy, $sortDirection);
     }
 
     public function findById(string $id)

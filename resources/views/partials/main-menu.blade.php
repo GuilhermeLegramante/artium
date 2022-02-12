@@ -19,7 +19,7 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="">
+        <a class="nav-link" href="{{ route('gender.list') }}">
           <span class="menu-title">Gêneros</span>
           <i class="mdi mdi-bookmark menu-icon"></i>
         </a>

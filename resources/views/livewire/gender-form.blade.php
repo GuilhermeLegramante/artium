@@ -1,27 +1,15 @@
-<div>
-    @include('partials.flash-messages')
+@extends('partials.form-page')
 
-    @include('partials.modal-delete')
+@section('form')
+    @include('partials.input-text',
+    ['label' => 'Nome',
+    'model' => 'name',
+    'placeholder' => 'Nome'
+    ])
 
-    @include('partials.page-header')
-
-    <div class="col-lg-12 grid-margin stretch-card">
-        <div class="card">
-            <div class="card-body">
-                @include('partials.input-text',
-                ['label' => 'Nome',
-                'model' => 'name',
-                'placeholder' => 'Nome'
-                ])
-
-                @include('partials.input-text',
-                ['label' => 'Descrição',
-                'model' => 'description',
-                'placeholder' => 'Descrição'
-                ])
-
-                @include('partials.footer-crud')
-            </div>
-        </div>
-    </div>
-</div>
+    @include('partials.input-text',
+    ['label' => 'Descrição',
+    'model' => 'description',
+    'placeholder' => 'Descrição'
+    ])
+@endsection

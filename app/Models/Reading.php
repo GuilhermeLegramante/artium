@@ -12,6 +12,7 @@ class Reading extends Model
     use HasFactory, BelongsToUser;
 
     protected $fillable = [
+        'user_id',
         'book_id',
         'startDate',
         'endDate',

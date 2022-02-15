@@ -6,34 +6,52 @@ use Livewire\Component;
 use Illuminate\Support\Facades\App;
 use App\Http\Livewire\Traits\WithForm;
 use App\Http\Livewire\Traits\WithFlashMessages;
+use App\Repositories\AuthorRepository;
 
-class AuthorForm extends Component
+class BookForm extends Component
 {
     use WithForm, WithFlashMessages;
 
-    public $title = 'Autor';
-    public $icon = 'mdi mdi-account-multiple';
-    public $previousRoute = 'author.list';
+    public $title = 'Livro';
+    public $icon = 'mdi mdi-library-books';
+    public $previousRoute = 'book.list';
     public $method = 'store';
-    public $basePath = 'author.list';
+    public $basePath = 'book.list';
 
-    protected $repositoryClass = 'App\Repositories\AuthorRepository';
+    protected $repositoryClass = 'App\Repositories\BookRepository';
+
+    public $name;
+    public $author_id;
+    public $authorName;
 
     protected $inputs = [
         ['field' => 'recordId', 'edit' => true],
         ['field' => 'name', 'edit' => true],
+        ['field' => 'author_id', 'edit' => true],
     ];
 
-    public $name;
+    protected $listeners = [
+        'selectAuthor',
+    ];
+    
+    public function selectAuthor($id)
+    {
+        $repository = App::make(AuthorRepository::class);
+        $author = $repository->findById($id);
+        $this->author_id = $author->id;
+        $this->authorName = $author->name;
+    }
 
     protected $validationAttributes = [
         'name' => 'Nome',
+        'author_id' => 'Author',
     ];
 
     public function rules()
     {
         return [
             'name' => ['required', 'max:255'],
+            'author_id' => ['required'],
         ];
     }
 
@@ -46,14 +64,12 @@ class AuthorForm extends Component
             if (isset($data)) {
                 $this->recordId = $data->id;
                 $this->name = $data->name;
+                $this->author_id = $data->author_id;
             }
         }
     }
-
     public function render()
     {
-        return view('livewire.author-form');
+        return view('livewire.book-form');
     }
-
-    
 }

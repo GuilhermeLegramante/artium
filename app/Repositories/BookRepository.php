@@ -14,30 +14,13 @@ class BookRepository
         $this->entity = $model;
     }
 
-    public function all(array $filters = [])
+    public function all(string $search = null, $sortBy = 'id', $sortDirection = 'asc')
     {
         return $this->entity
-            ->where(function ($query) use ($filters) {
-                if (isset($filters['filter'])) {
-                    $filter = $filters['filter'];
-                    $query->where('title', 'LIKE', "'%{$filter}%");
-                }
-
-                if (isset($filters['author'])) {
-                    $query->where('author_id', $filters['author']);
-                }
-
-                if (isset($filters['publisher'])) {
-                    $query->where('publisher_id', $filters['publisher']);
-                }
-
-                if (isset($filters['gender'])) {
-                    $query->where('gender_id', $filters['gender']);
-                }
-
-                                $query->where('user_id', auth()->user());
-            })
-            ->orderBy($filters['sortBy'], $filters['sortDirection']);
+            ->where('title', 'LIKE', '%' . $search . '%')
+            ->orWhere('id', 'LIKE', '%' . $search . '%')
+            ->orWhere('gender_id', 'LIKE', '%' . $search . '%')
+            ->orderBy($sortBy, $sortDirection);
     }
 
     public function findById(string $id)

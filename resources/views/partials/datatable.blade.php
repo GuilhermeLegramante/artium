@@ -20,6 +20,9 @@
                                         @case('timestamps')
                                             {{ date('d/m/Y H:i:s', strtotime($item->{$column['field']})) }}
                                         @break
+                                        @case('year')
+                                            {{ date('Y', strtotime($item->{$column['field']})) }}
+                                        @break
                                         @case('button')
                                             @include($column['view'])
                                         @break

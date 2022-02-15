@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Livewire\BookForm;
+use App\Http\Livewire\BookTable;
 use App\Http\Livewire\AuthorForm;
 use App\Http\Livewire\GenderForm;
 use App\Http\Livewire\AuthorTable;
@@ -33,6 +35,14 @@ Route::prefix('/genero')->group(function () {
         Route::get('/', GenderTable::class)->name('list');
         Route::get('/inclusao', GenderForm::class)->name('create');
         Route::get('/{id}', GenderForm::class)->name('edit');
+    });
+});
+
+Route::prefix('/minha-biblioteca')->group(function () {
+    Route::name('book.')->group(function () {
+        Route::get('/', BookTable::class)->name('list');
+        Route::get('/inclusao', BookForm::class)->name('create');
+        Route::get('/{id}', BookForm::class)->name('edit');
     });
 });
 

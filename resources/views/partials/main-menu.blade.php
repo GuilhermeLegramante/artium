@@ -31,7 +31,7 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="">
+        <a class="nav-link" href="{{ route('book.list') }}">
           <span class="menu-title">Minha Biblioteca</span>
           <i class="mdi mdi-library-books menu-icon"></i>
         </a>

@@ -14,6 +14,7 @@ class Book extends Model
     use HasFactory, BelongsToUser;
 
     protected $fillable = [
+        'user_id',
         'title',
         'author_id',
         'publisher_id',

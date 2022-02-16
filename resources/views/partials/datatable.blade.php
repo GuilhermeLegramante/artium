@@ -26,6 +26,9 @@
                                         @case('button')
                                             @include($column['view'])
                                         @break
+                                        @case('relation')
+                                            {{ $item->{$column['field']}->{$column['relationAttribute']} }}
+                                        @break
                                         @default
                                     @endswitch
                                 </td>

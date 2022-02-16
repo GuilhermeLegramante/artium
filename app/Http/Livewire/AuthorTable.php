@@ -16,7 +16,7 @@ class AuthorTable extends Component
     public $route = 'author';
     public $entityName = 'Autor';
     public $searchFields = 'Código ou Nome';
-    public $title = 'Autores';
+    public $pageTitle = 'Autores';
     public $icon = 'mdi mdi-account-multiple';
 
     public $headerColumns = [

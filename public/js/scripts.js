@@ -46,4 +46,30 @@ document.addEventListener('livewire:load', function() {
     window.livewire.on('closeAuthorModal', () => {
         modalAuthor.style.display = "none";
     });
+
+    var modalPublisher = document.getElementById("modal-select-publisher");
+    var selectPublisher = document.getElementById("selectPublisher");
+    var spanPublisher = document.getElementById("spanClosePublisher");
+
+    selectPublisher.onclick = function() {
+        modalPublisher.style.display = "block";
+    }
+
+    spanPublisher.onclick = function() {
+        modalPublisher.style.display = "none";
+    }
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+
+    window.livewire.on('showPublisherModal', () => {
+        modalPublisher.style.display = "block";
+    });
+
+    window.livewire.on('closePublisherModal', () => {
+        modalPublisher.style.display = "none";
+    });
 })

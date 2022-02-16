@@ -16,7 +16,7 @@ class GenderTable extends Component
     public $route = 'gender';
     public $entityName = 'Gênero';
     public $searchFields = 'Código ou Nome';
-    public $title = 'Gêneros';
+    public $pageTitle = 'Gêneros';
     public $icon = 'mdi mdi-contacts';
 
     public $headerColumns = [

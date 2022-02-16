@@ -33,6 +33,7 @@ class BookRepository
         return $this->entity
             ->create([
                 'user_id' => auth()->user()->id,
+                'title' => $data['title'],
                 'author_id' => $data['author_id'],
                 'publisher_id' => $data['publisher_id'],
                 'gender_id' => $data['gender_id'],
@@ -48,9 +49,10 @@ class BookRepository
     public function update(array $data): bool
     {
         return $this->entity
-            ->where('id', $data['id'])
+            ->where('id', $data['recordId'])
             ->update([
                 'user_id' => auth()->user()->id,
+                'title' => $data['title'],
                 'author_id' => $data['author_id'],
                 'publisher_id' => $data['publisher_id'],
                 'gender_id' => $data['gender_id'],

@@ -2,17 +2,19 @@
 
 namespace App\Http\Livewire;
 
-use Livewire\Component;
-use Illuminate\Support\Facades\App;
-use App\Http\Livewire\Traits\WithForm;
+use App\Http\Livewire\Traits\SelectAuthor;
+use App\Http\Livewire\Traits\SelectPublisher;
 use App\Http\Livewire\Traits\WithFlashMessages;
-use App\Repositories\AuthorRepository;
+use App\Http\Livewire\Traits\WithForm;
+use App\Repositories\GenderRepository;
+use Illuminate\Support\Facades\App;
+use Livewire\Component;
 
 class BookForm extends Component
 {
-    use WithForm, WithFlashMessages;
+    use WithForm, WithFlashMessages, SelectAuthor, SelectPublisher;
 
-    public $title = 'Livro';
+    public $pageTitle = 'Livro';
     public $icon = 'mdi mdi-library-books';
     public $previousRoute = 'book.list';
     public $method = 'store';
@@ -20,38 +22,60 @@ class BookForm extends Component
 
     protected $repositoryClass = 'App\Repositories\BookRepository';
 
-    public $name;
-    public $author_id;
-    public $authorName;
+    public $title;
+    public $gender_id;
+    public $genders = [];
+    public $edition;
+    public $pages;
+    public $firstPublicationYear;
+    public $editionYear;
+    public $acquisitionDate;
+    public $note;
 
     protected $inputs = [
         ['field' => 'recordId', 'edit' => true],
-        ['field' => 'name', 'edit' => true],
+        ['field' => 'title', 'edit' => true],
         ['field' => 'author_id', 'edit' => true],
+        ['field' => 'publisher_id', 'edit' => true],
+        ['field' => 'gender_id', 'edit' => true],
+        ['field' => 'edition', 'edit' => true],
+        ['field' => 'pages', 'edit' => true],
+        ['field' => 'firstPublicationYear', 'edit' => true],
+        ['field' => 'editionYear', 'edit' => true],
+        ['field' => 'acquisitionDate', 'edit' => true],
+        ['field' => 'note', 'edit' => true],
     ];
 
     protected $listeners = [
         'selectAuthor',
+        'selectPublisher',
     ];
-    
-    public function selectAuthor($id)
-    {
-        $repository = App::make(AuthorRepository::class);
-        $author = $repository->findById($id);
-        $this->author_id = $author->id;
-        $this->authorName = $author->name;
-    }
 
     protected $validationAttributes = [
-        'name' => 'Nome',
-        'author_id' => 'Author',
+        'title' => 'Título',
+        'author_id' => 'Autor',
+        'publisher_id' => 'Editora',
+        'gender_id' => 'Gênero',
+        'edition' => 'Edição',
+        'pages' => 'Páginas',
+        'firstPublicationYear' => 'Ano da 1ª publicação',
+        'editionYear' => 'Ano da Edição',
+        'acquisitionDate' => 'Data de aquisição',
+        'note' => 'Observações',
     ];
 
     public function rules()
     {
         return [
-            'name' => ['required', 'max:255'],
+            'title' => ['required', 'max:255'],
             'author_id' => ['required'],
+            'publisher_id' => ['required'],
+            'gender_id' => ['required'],
+            'edition' => ['numeric', 'nullable'],
+            'pages' => ['numeric', 'nullable', 'min:1'],
+            'firstPublicationYear' => ['numeric', 'nullable', 'max:' . date('Y')],
+            'editionYear' => ['numeric', 'max:' . date('Y'), 'nullable'],
+            'acquisitionDate' => ['date', 'nullable'],
         ];
     }
 
@@ -62,12 +86,36 @@ class BookForm extends Component
             $repository = App::make($this->repositoryClass);
             $data = $repository->findById($id);
             if (isset($data)) {
-                $this->recordId = $data->id;
-                $this->name = $data->name;
-                $this->author_id = $data->author_id;
+                $this->setFields($data);
             }
         }
+
+        $repository = App::make(GenderRepository::class);
+        $data = $repository->all()->get();
+        $item = [];
+        foreach ($data as $key => $value) {
+            $item = ['value' => $value->id, 'description' => $value->name];
+            array_push($this->genders, $item);
+        }
     }
+
+    public function setFields($data)
+    {
+        $this->selectAuthor($data->author_id);
+        $this->selectPublisher($data->publisher_id);
+        $this->recordId = $data->id;
+        $this->title = $data->title;
+        $this->author_id = $data->author_id;
+        $this->publisher_id = $data->publisher_id;
+        $this->gender_id = $data->gender_id;
+        $this->edition = $data->edition;
+        $this->pages = $data->pages;
+        $this->firstPublicationYear = $data->firstPublicationYear;
+        $this->editionYear = $data->editionYear;
+        $this->acquisitionDate = $data->acquisitionDate;
+        $this->note = $data->note;
+    }
+
     public function render()
     {
         return view('livewire.book-form');

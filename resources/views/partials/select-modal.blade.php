@@ -10,8 +10,8 @@
         @endif
     </div>
     @error($model)
-        <h3 class="text-danger">
+        <p class="text-danger">
             <strong>{{ $message }}</strong>
-        </h3>
+        </p>
     @enderror
 </div>

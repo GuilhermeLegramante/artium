@@ -11,7 +11,7 @@ class AuthorForm extends Component
 {
     use WithForm, WithFlashMessages;
 
-    public $title = 'Autor';
+    public $pageTitle = 'Autor';
     public $icon = 'mdi mdi-account-multiple';
     public $previousRoute = 'author.list';
     public $method = 'store';

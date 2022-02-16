@@ -2,62 +2,33 @@
 
 namespace App\Http\Livewire;
 
-use Livewire\Component;
+use App\Http\Livewire\Traits\WithSelect;
 use Illuminate\Support\Facades\App;
-use App\Http\Livewire\Traits\WithDatatable;
+use Livewire\Component;
 
 class AuthorSelect extends Component
 {
-    use WithDatatable;
+    use WithSelect;
 
     public $title = 'AUTORES';
     public $modalId = 'modal-select-author';
     public $spanId = 'spanCloseAuthor';
     public $searchFields = 'Nome';
 
-    public $headerColumns = [
-        ['field' => 'id', 'label' => 'Código'],
-        ['field' => 'name', 'label' => 'Nome'],
-        ['field' => null, 'label' => 'Ações'],
-    ];
-
-    public $bodyColumns = [
-        ['field' => 'id', 'type' => 'string'],
-        ['field' => 'name', 'type' => 'string'],
-        ['field' => 'editButton', 'type' => 'button', 'view' => 'partials.select-button'],
-    ];
+    public $closeModal = 'closeAuthorModal';
+    public $selectModal = 'selectAuthor';
+    public $showModal = 'showAuthorModal';
 
     protected $repositoryClass = 'App\Repositories\AuthorRepository';
 
-    private $data = [];
-
-    public function mount()
-    {
-        $this->perPage = 10;
-    }
-
-    public function updatedSearch()
-    {
-        $this->emit('showAuthorModal');
-    }
-
     public function render()
     {
-        $repository = App::make($this->repositoryClass);
-
-        $this->data = $repository
-            ->all($this->search, $this->sortBy, $this->sortDirection)
-            ->paginate($this->perPage);
+        $this->search();
 
         $data = $this->data;
 
         return view('livewire.author-select', compact('data'));
     }
 
-    public function select($id)
-    {
-        $this->emit('closeAuthorModal');
-
-        $this->emit('selectAuthor', $id);
-    }
+   
 }

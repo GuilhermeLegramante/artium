@@ -11,7 +11,7 @@ class PublisherForm extends Component
 {
     use WithForm, WithFlashMessages;
 
-    public $title = 'Editora';
+    public $pageTitle = 'Editora';
     public $icon = 'mdi mdi-contacts';
     public $previousRoute = 'publisher.list';
     public $method = 'store';

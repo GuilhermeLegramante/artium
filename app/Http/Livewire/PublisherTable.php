@@ -16,7 +16,7 @@ class PublisherTable extends Component
     public $route = 'publisher';
     public $entityName = 'Editora';
     public $searchFields = 'Código ou Nome';
-    public $title = 'Editoras';
+    public $pageTitle = 'Editoras';
     public $icon = 'mdi mdi-contacts';
 
     public $headerColumns = [

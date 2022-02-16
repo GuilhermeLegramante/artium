@@ -11,7 +11,7 @@ class GenderForm extends Component
 {
     use WithForm, WithFlashMessages;
     
-    public $title = 'Gênero';
+    public $pageTitle = 'Gênero';
     public $icon = 'mdi mdi-contacts';
     public $previousRoute = 'gender.list';
     public $method = 'store';

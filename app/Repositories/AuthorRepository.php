@@ -17,6 +17,7 @@ class AuthorRepository
     public function all(string $search = null, $sortBy = 'id', $sortDirection = 'asc')
     {
         return $this->entity
+            ->where('user_id', '=', auth()->user()->id)
             ->where('name', 'LIKE', '%' . $search . '%')
             ->orWhere('id', 'LIKE', '%' . $search . '%')
             ->orderBy($sortBy, $sortDirection);
@@ -49,7 +50,7 @@ class AuthorRepository
     public function delete(array $data): bool
     {
         return $this->entity
-            ->where('id', $data['id'])
+            ->where('id', $data['recordId'])
             ->delete();
     }
 }

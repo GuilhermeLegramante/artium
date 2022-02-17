@@ -19,7 +19,7 @@ class CreateReadingsTable extends Migration
             $table->foreignId('book_id')->constrained('books');
             $table->date('startDate');
             $table->date('endDate');
-            $table->integer('assessment');
+            $table->integer('assessment')->nullable();
             $table->text('note')->nullable();
             $table->timestamps();
         });

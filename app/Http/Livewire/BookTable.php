@@ -47,5 +47,6 @@ class BookTable extends Component
 
         return view('livewire.book-table', [
             'data' => $data,
-        ]);}
+        ]);
+    }
 }

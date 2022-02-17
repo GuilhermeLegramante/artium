@@ -6,6 +6,8 @@ use App\Http\Livewire\AuthorForm;
 use App\Http\Livewire\GenderForm;
 use App\Http\Livewire\AuthorTable;
 use App\Http\Livewire\GenderTable;
+use App\Http\Livewire\ReadingForm;
+use App\Http\Livewire\ReadingTable;
 use App\Http\Livewire\PublisherForm;
 use App\Http\Livewire\PublisherTable;
 use Illuminate\Support\Facades\Route;
@@ -43,6 +45,14 @@ Route::prefix('/minha-biblioteca')->group(function () {
         Route::get('/', BookTable::class)->name('list');
         Route::get('/inclusao', BookForm::class)->name('create');
         Route::get('/{id}', BookForm::class)->name('edit');
+    });
+});
+
+Route::prefix('/leitura')->group(function () {
+    Route::name('reading.')->group(function () {
+        Route::get('/', ReadingTable::class)->name('list');
+        Route::get('/inclusao', ReadingForm::class)->name('create');
+        Route::get('/{id}', ReadingForm::class)->name('edit');
     });
 });
 

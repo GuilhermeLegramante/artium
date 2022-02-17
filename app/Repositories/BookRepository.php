@@ -3,7 +3,6 @@
 namespace App\Repositories;
 
 use App\Models\Book;
-use App\Repositories\Traits\RepositoryTrait;
 
 class BookRepository
 {
@@ -17,6 +16,7 @@ class BookRepository
     public function all(string $search = null, $sortBy = 'id', $sortDirection = 'asc')
     {
         return $this->entity
+            ->where('user_id', '=', auth()->user()->id)
             ->where('title', 'LIKE', '%' . $search . '%')
             ->orWhere('id', 'LIKE', '%' . $search . '%')
             ->orWhere('gender_id', 'LIKE', '%' . $search . '%')
@@ -68,7 +68,7 @@ class BookRepository
     public function delete(array $data): bool
     {
         return $this->entity
-            ->where('id', $data['id'])
+            ->where('id', $data['recordId'])
             ->delete();
     }
 }

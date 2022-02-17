@@ -2,12 +2,12 @@
 
 namespace App\Http\Livewire;
 
-use App\Http\Livewire\Traits\WithDatatable;
-use App\Http\Livewire\Traits\WithFlashMessages;
-use App\Repositories\AuthorRepository;
-use Illuminate\Support\Facades\App;
 use Livewire\Component;
 use Livewire\WithPagination;
+use Illuminate\Support\Facades\App;
+use App\Repositories\AuthorRepository;
+use App\Http\Livewire\Traits\WithDatatable;
+use App\Http\Livewire\Traits\WithFlashMessages;
 
 class AuthorTable extends Component
 {

@@ -25,7 +25,7 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="">
+        <a class="nav-link" href="{{ route('reading.list') }}">
           <span class="menu-title">Leituras</span>
           <i class="mdi mdi-book-open-page-variant menu-icon"></i>
         </a>

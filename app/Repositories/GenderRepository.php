@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\Gender;
+
 class GenderRepository
 {
     protected $entity;
@@ -15,6 +16,7 @@ class GenderRepository
     public function all(string $search = null, $sortBy = 'id', $sortDirection = 'asc')
     {
         return $this->entity
+            ->where('user_id', '=', auth()->user()->id)
             ->where('name', 'LIKE', '%' . $search . '%')
             ->orWhere('id', 'LIKE', '%' . $search . '%')
             ->orderBy($sortBy, $sortDirection);
@@ -38,7 +40,7 @@ class GenderRepository
     public function update(array $data): bool
     {
         return $this->entity
-            ->where('id', $data['id'])
+            ->where('id', $data['recordId'])
             ->update([
                 'user_id' => auth()->user()->id,
                 'name' => $data['name'],
@@ -49,7 +51,7 @@ class GenderRepository
     public function delete(array $data): bool
     {
         return $this->entity
-            ->where('id', $data['id'])
+            ->where('id', $data['recordId'])
             ->delete();
     }
 }

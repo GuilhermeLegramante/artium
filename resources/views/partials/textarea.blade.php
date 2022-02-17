@@ -1,6 +1,6 @@
 <div class="form-group">
     <label>{{ $label }}</label>
-    <textarea wire:model.lazy="{{ $model }}" rows="{{ $rows }}"
+    <textarea wire:model.defer="{{ $model }}" rows="{{ $rows }}"
         maxlength="{{ $maxLength }} {{ isset($readonly) ? ($readonly != false ? 'readonly' : '') : '' }}"
         class="form-control input-custom {{ $errors->has($model) ? 'is-invalid' : '' }}">
         </textarea>

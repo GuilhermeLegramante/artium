@@ -29,6 +29,4 @@ class AuthorSelect extends Component
 
         return view('livewire.author-select', compact('data'));
     }
-
-   
 }

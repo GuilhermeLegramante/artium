@@ -23,7 +23,7 @@ class BookTable extends Component
     public $headerColumns = [
         ['field' => 'id', 'label' => 'Código'],
         ['field' => 'title', 'label' => 'Título'],
-        ['field' => 'gender', 'label' => 'Gênero'],
+        ['field' => 'gender_id', 'label' => 'Gênero'],
         ['field' => 'acquisitionDate', 'label' => 'Data de Aquisição'],
         ['field' => 'editionYear', 'label' => 'Edição'],
         ['field' => null, 'label' => 'Ações'],

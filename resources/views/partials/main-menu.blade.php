@@ -36,6 +36,18 @@
                 <i class="mdi mdi-library-books menu-icon"></i>
             </a>
         </li>
+        
+        <form method="POST" action="{{ route('logout') }}">
+            @csrf
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
+            this.closest('form').submit();">
+                <span class="menu-title">Sair</span>
+                <i class="mdi mdi-library-books menu-icon"></i>
+            </a>
+        </li>
+    </form>
+
         {{-- <li class="nav-item">
             <a class="nav-link" href="">
                 <span class="menu-title">Movimentos</span>

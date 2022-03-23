@@ -25,6 +25,7 @@ class Book extends Model
         'editionYear',
         'acquisitionDate',
         'note',
+        'source',
     ];
 
     public function author()

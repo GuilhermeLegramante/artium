@@ -50,7 +50,7 @@ class MovementRepository
     public function update(array $data): bool
     {
         return $this->entity
-            ->where('id', $data['id'])
+            ->where('id', $data['recordId'])
             ->update([
                 'user_id' => auth()->user()->id,
                 'date' => $data['date'],
@@ -62,7 +62,7 @@ class MovementRepository
     public function delete(array $data): bool
     {
         return $this->entity
-            ->where('id', $data['id'])
+            ->where('id', $data['recordId'])
             ->delete();
     }
 }

@@ -31,6 +31,7 @@ class BookForm extends Component
     public $editionYear;
     public $acquisitionDate;
     public $note;
+    public $source;
 
     protected $inputs = [
         ['field' => 'recordId', 'edit' => true],
@@ -44,6 +45,7 @@ class BookForm extends Component
         ['field' => 'editionYear', 'edit' => true],
         ['field' => 'acquisitionDate', 'edit' => true],
         ['field' => 'note', 'edit' => true],
+        ['field' => 'source', 'edit' => true],
     ];
 
     protected $listeners = [
@@ -62,6 +64,7 @@ class BookForm extends Component
         'editionYear' => 'Ano da Edição',
         'acquisitionDate' => 'Data de aquisição',
         'note' => 'Observações',
+        'source' => 'Origem',
     ];
 
     public function rules()
@@ -76,6 +79,7 @@ class BookForm extends Component
             'firstPublicationYear' => ['numeric', 'nullable', 'max:' . date('Y')],
             'editionYear' => ['numeric', 'max:' . date('Y'), 'nullable'],
             'acquisitionDate' => ['date', 'nullable'],
+            'source' => ['max:255', 'nullable'],
         ];
     }
 
@@ -114,6 +118,7 @@ class BookForm extends Component
         $this->editionYear = $data->editionYear;
         $this->acquisitionDate = $data->acquisitionDate;
         $this->note = $data->note;
+        $this->source = $data->source;
     }
 
     public function render()

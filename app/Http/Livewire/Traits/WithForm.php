@@ -66,7 +66,7 @@ trait WithForm
         {
             $repository = App::make($this->repositoryClass);
             $repository->delete([
-                'id' => $this->recordId,
+                'recordId' => $this->recordId,
             ]);
             session()->flash('success', 'Registro excluído com sucesso');
             return redirect()->route($this->basePath);

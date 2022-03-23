@@ -43,6 +43,7 @@ class BookRepository
                 'editionYear' => isset($data['editionYear']) ? $data['editionYear'] : null,
                 'acquisitionDate' => isset($data['acquisitionDate']) ? $data['acquisitionDate'] : null,
                 'note' => isset($data['note']) ? $data['note'] : null,
+                'source' => isset($data['source']) ? $data['source'] : null,
             ]);
     }
 
@@ -62,6 +63,7 @@ class BookRepository
                 'editionYear' => isset($data['editionYear']) ? $data['editionYear'] : null,
                 'acquisitionDate' => isset($data['acquisitionDate']) ? $data['acquisitionDate'] : null,
                 'note' => isset($data['note']) ? $data['note'] : null,
+                'source' => isset($data['source']) ? $data['source'] : null,
             ]);
     }
 

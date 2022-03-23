@@ -49,7 +49,7 @@ class WishlistRepository
     public function update(array $data): bool
     {
         return $this->entity
-            ->where('id', $data['id'])
+            ->where('id', $data['recordId'])
             ->update([
                 'user_id' => auth()->user()->id,
                 'title' => $data['title'],
@@ -59,7 +59,7 @@ class WishlistRepository
     public function delete(array $data): bool
     {
         return $this->entity
-            ->where('id', $data['id'])
+            ->where('id', $data['recordId'])
             ->delete();
     }
 }
